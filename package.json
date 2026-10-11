@@ -1,0 +1,24 @@
+{
+  "name": "rootline-campus-analytics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Student success analytics demo with modular frontend and local SQLite API",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "check": "node scripts/check-project.js",
+    "create-admin": "node scripts/create-admin.js",
+    "test:auth": "node scripts/test-auth.js",
+    "test:greeting": "node scripts/test-greeting.js",
+    "test:dashboard-metrics": "node scripts/test-dashboard-metrics.js",
+    "seed:demo": "node scripts/seed-demo.js",
+    "test:seed-demo": "node scripts/test-seed-demo.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

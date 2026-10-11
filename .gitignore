@@ -1,0 +1,28 @@
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and local environment
+*.log
+.env
+.env.*
+!.env.example
+
+# Dependencies/build output (if introduced later)
+node_modules/
+dist/
+build/
+
+# Local SQLite database and journal files
+data/*.sqlite
+data/*.sqlite-shm
+data/*.sqlite-wal
+
+# Local backups
+backups/
+
+# Local backups and nested repository
+backups/
+Rootline-campus/
