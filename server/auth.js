@@ -82,16 +82,33 @@ function requireAdmin(request, response, next) {
   return next();
 }
 
+
 function requireSameOrigin(request, response, next) {
   const origin = request.get('origin');
+
   if (origin) {
     let parsed;
-    try { parsed = new URL(origin); }
-    catch (_error) { return response.status(403).json({ error: 'Request origin could not be verified.' }); }
-    if (parsed.host !== request.get('host') || parsed.protocol !== `${request.protocol}:`) {
-      return response.status(403).json({ error: 'Cross-origin requests are not allowed.' });
+
+    try {
+      parsed = new URL(origin);
+    } catch (_error) {
+      return response.status(403).json({
+        error: 'Request origin could not be verified.'
+      });
+    }
+
+    const allowedOrigins = new Set([
+      `${request.protocol}://${request.get('host')}`,
+      'https://rootline-campus-analytics.netlify.app'
+    ]);
+
+    if (!allowedOrigins.has(parsed.origin)) {
+      return response.status(403).json({
+        error: 'Cross-origin requests are not allowed.'
+      });
     }
   }
+
   return next();
 }
 
